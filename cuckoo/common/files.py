@@ -8,21 +8,10 @@ import tempfile
 import ntpath
 import shutil
 
-from cuckoo.common.config import config
 from cuckoo.common.exceptions import CuckooOperationalError
-from cuckoo.misc import getuser
 
 def temppath():
-    """Returns the true temporary directory."""
-    tmppath = config("cuckoo:cuckoo:tmppath")
-
-    # Backwards compatibility with older configuration.
-    if not tmppath or tmppath == "/tmp":
-        return os.path.join(
-            tempfile.gettempdir(), "cuckoo-tmp-%s" % getuser()
-        )
-
-    return tmppath
+    return "C:\\tmp"
 
 class Storage(object):
     @staticmethod

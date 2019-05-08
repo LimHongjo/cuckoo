@@ -10,7 +10,6 @@ import thread
 import time
 
 from cuckoo.common.colors import red, yellow, cyan
-from cuckoo.core.database import Database
 from cuckoo.misc import cwd
 
 _tasks = {}
@@ -28,12 +27,13 @@ class DatabaseHandler(logging.Handler):
     """
 
     def emit(self, record):
+        return
         # TODO Should this also attempt to guess the task ID from _tasks?
-        if hasattr(record, "task_id"):
-            Database().add_error(
-                self.format(record), int(record.task_id),
-                getattr(record, "error_action", None)
-            )
+        #if hasattr(record, "task_id"):
+        #    Database().add_error(
+        #        self.format(record), int(record.task_id),
+        #        getattr(record, "error_action", None)
+        #    )
 
 class TaskHandler(logging.Handler):
     """Per-task logger.

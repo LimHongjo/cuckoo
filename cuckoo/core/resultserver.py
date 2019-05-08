@@ -55,7 +55,7 @@ class ResultServer(SocketServer.ThreadingTCPServer, object):
                 )
             except Exception as e:
                 if e.errno == errno.EADDRINUSE:
-                    if config("cuckoo:resultserver:force_port"):
+                    if True:
                         raise CuckooCriticalError(
                             "Cannot bind ResultServer on port %d, "
                             "bailing." % self.port
