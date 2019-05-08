@@ -2,6 +2,7 @@ import socket
 import threading
 
 from bsonhandler import BsonHandler
+from filehandler import FileHandler
 
 def readProtocol(client):
     buf = ""
@@ -28,10 +29,8 @@ def handleClient(client):
         print("# [" + str(version) + "] Check C:\\socket" + str(version) + ".txt file")
         handler = BsonHandler(client, version)
     elif command == "FILE":
-        # handler = FileUpload(self, version)
-        print("# [" + str(version) + "] FILE command not yet implemented")
-        client.close()
-        return
+        #print("# [" + str(version) + "] FILE command not yet implemented")
+        handler = FileHandler(client, version)
     elif command == "LOG":
         # handler = LogHandler(self, version)
         print("# [" + str(version) + "] LOG command not yet implemented")

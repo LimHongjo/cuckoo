@@ -76,6 +76,7 @@ class BsonParser():
     }
 
     def __init__(self, handler):
+        self.handler = handler
         self.fd = handler
         self.infomap = {}
         self.flags_value = {}
