@@ -14,7 +14,6 @@ import SocketServer
 import threading
 
 from cuckoo.common.abstracts import ProtocolHandler
-from cuckoo.common.config import config
 from cuckoo.common.exceptions import CuckooOperationalError
 from cuckoo.common.exceptions import CuckooCriticalError
 from cuckoo.common.exceptions import CuckooResultError
@@ -46,8 +45,8 @@ class ResultServer(SocketServer.ThreadingTCPServer, object):
         self.analysistasks = {}
         self.analysishandlers = {}
 
-        self.ip = config("cuckoo:resultserver:ip")
-        self.port = config("cuckoo:resultserver:port")
+        self.ip = "127.0.0.1"
+        self.port = 2042
         while True:
             try:
                 server_addr = self.ip, self.port
@@ -323,7 +322,7 @@ class FileUpload(ProtocolHandler):
     lock = threading.Lock()
 
     def init(self):
-        self.upload_max_size = config("cuckoo:resultserver:upload_max_size")
+        self.upload_max_size = 134217728
         self.storagepath = self.handler.storagepath
         self.fd = None
 
