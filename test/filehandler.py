@@ -37,7 +37,7 @@ class FileUpload():
         self.storagepath = "C:\\file"
         self.fd = None
 
-        self.filelog = os.path.join(self.handler.storagepath, "files.json")
+        self.filelog = os.path.join(self.storagepath, "files.json")
 
     def __iter__(self):
         # Read until newline for file path, e.g.,
@@ -71,9 +71,9 @@ class FileUpload():
             print("! [" + str(self.handler.version) + "] FileUpload failure, path sanitization failed.")
             self.handler.disconnect()
 
-        if os.path.exists(file_path):
-            print("! [" + str(self.handler.version) + "] Analyzer tried to overwrite an existing file, closing connection.")
-            return
+        #if os.path.exists(file_path):
+        #    print("! [" + str(self.handler.version) + "] Analyzer tried to overwrite an existing file, closing connection.")
+        #    return
 
         self.fd = open(file_path, "wb")
         chunk = self.handler.read_any()

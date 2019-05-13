@@ -29,7 +29,7 @@ def handleClient(client):
         print("# [" + str(version) + "] Check C:\\socket" + str(version) + ".txt file")
         handler = BsonHandler(client, version)
     elif command == "FILE":
-        #print("# [" + str(version) + "] FILE command not yet implemented")
+        print("# [" + str(version) + "] Check C:\\file folder")
         handler = FileHandler(client, version)
     elif command == "LOG":
         # handler = LogHandler(self, version)
